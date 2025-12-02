@@ -233,4 +233,38 @@
 
   productDetailFeatures();
 
+  /**
+   * WhatsApp Form Submission Handler
+   */
+  const contactForm = document.getElementById('contactForm');
+  const newsletterForm = document.getElementById('newsletterForm');
+  const whatsappNumber = '8870208686';
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      const name = this.querySelector('input[name="name"]').value;
+      const email = this.querySelector('input[name="email"]').value;
+      const subject = this.querySelector('input[name="subject"]').value;
+      const message = this.querySelector('textarea[name="message"]').value;
+
+      const whatsappMessage = `New Inquiry from SVR Website:%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ASubject: ${encodeURIComponent(subject)}%0A%0AMessage:%0A${encodeURIComponent(message)}`;
+
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+      window.open(whatsappUrl, '_blank');
+    });
+  }
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      const email = this.querySelector('input[name="email"]').value;
+
+      const whatsappMessage = `New Newsletter Subscription:%0A%0AEmail: ${encodeURIComponent(email)}`;
+
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+      window.open(whatsappUrl, '_blank');
+    });
+  }
+
 })();
