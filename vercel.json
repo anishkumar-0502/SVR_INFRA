@@ -4,8 +4,5 @@
       "source": "/:path*",
       "destination": "/:path*.html"
     }
-  ],
-  "errorPages": {
-    "404": "/404.html"
-  }
+  ]
 }
