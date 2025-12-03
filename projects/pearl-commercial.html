@@ -239,7 +239,7 @@
               <!-- Contact Form -->
               <div class="contact-form">
                 <h4>Book Your Office Space</h4>
-                <form id="projectInquiryForm" action="../forms/contact.php" method="post" class="php-email-form">
+                <form id="projectInquiryForm" onsubmit="handleContactForm(event)" class="php-email-form">
                   <div class="row">
                     <div class="col-12 form-group">
                       <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
@@ -254,7 +254,7 @@
                       <input type="text" name="subject" class="form-control" placeholder="Subject" value="Inquiry: Pearl Commercial Tower">
                     </div>
                     <div class="col-12 form-group">
-                      <textarea class="form-control" name="message" rows="4" placeholder="Your Message"></textarea>
+                      <textarea class="form-control" id="contactMessage" name="message" rows="4" placeholder="Your Message"></textarea>
                     </div>
                     <div class="col-12 text-center">
                       <div class="loading">Loading</div>
@@ -375,11 +375,10 @@
             </div>
 
             <div class="social-links">
-              <a href="#"><i class="bi bi-facebook"></i></a>
-              <a href="#"><i class="bi bi-twitter-x"></i></a>
-              <a href="#"><i class="bi bi-linkedin"></i></a>
-              <a href="#"><i class="bi bi-youtube"></i></a>
-              <a href="#"><i class="bi bi-github"></i></a>
+              <a href="https://www.linkedin.com/company/svr-infrastructure-builders/" target="_blank"><i class="bi bi-linkedin"></i></a>
+              <a href="https://www.instagram.com/svr_infra_and_builders?igsh=MWlsY2Z2bXY0aXA1OA==" target="_blank"><i class="bi bi-instagram"></i></a>
+              <a href="https://www.threads.com/@svr_infra_and_builders?igshid=NTc4MTIwNjQ2YQ==" target="_blank"><i class="bi bi-threads"></i></a>
+              <a href="https://youtube.com/@svrinfrastructurebuilders?si=P1vYx03djo6hLfsc"><i class="bi bi-youtube"></i></a>
             </div>
           </div>
         </div>
@@ -428,6 +427,30 @@
 
   <!-- Main JS File -->
   <script src="../assets/js/main.js"></script>
+
+
+  <script>
+  function handleContactForm(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('contactName') ? document.getElementById('contactName').value : 'Guest';
+    const email = document.getElementById('contactEmail') ? document.getElementById('contactEmail').value : 'Not provided';
+    const subject = document.getElementById('contactSubject') ? document.getElementById('contactSubject').value : 'Inquiry';
+    const message = document.getElementById('contactMessage') ? document.getElementById('contactMessage').value : 'Message not provided';
+    
+    const whatsappNumber = '8870208686';
+    const whatsappMessage = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`
+    );
+    
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    
+    const form = document.getElementById('contactForm') || event.target;
+    if(form && form.reset) form.reset();
+    
+    return false;
+  }
+  </script>
 
 </body>
 
