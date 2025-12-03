@@ -1585,19 +1585,29 @@
   function handleHeroSearchForm(event) {
     event.preventDefault();
     
-    const clientName = document.getElementById('client-name').value;
+    const clientName = document.getElementById('client-name').value.trim();
     const serviceType = document.getElementById('service-type').value;
     const budgetRange = document.getElementById('budget-range').value;
     const projectSize = document.getElementById('project-size').value;
     const timeline = document.getElementById('timeline').value;
+    
+    if (!clientName || !serviceType || !budgetRange || !projectSize || !timeline) {
+      alert('Please fill all fields');
+      return false;
+    }
     
     const whatsappNumber = '918870208686';
     const whatsappMessage = encodeURIComponent(
       `🏢 *PROJECT CONSULTATION REQUEST*\n\n👤 *Client Information:*\nName: ${clientName}\n\n🎯 *Project Details:*\nService Required: ${serviceType}\nBudget Range: ${budgetRange}\nProject Scale: ${projectSize}\nTimeline: ${timeline}\n\n---\n*Please send us your portfolio and quotation for this project. I would like to discuss the details further.*`
     );
     
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-    document.getElementById('heroSearchForm').reset();
+    setTimeout(() => {
+      window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    }, 100);
+    
+    setTimeout(() => {
+      document.getElementById('heroSearchForm').reset();
+    }, 200);
     
     return false;
   }

@@ -379,18 +379,28 @@
   function handleContactForm(event) {
     event.preventDefault();
     
-    const name = document.getElementById('contactName').value;
-    const email = document.getElementById('contactEmail').value;
-    const subject = document.getElementById('contactSubject').value;
-    const message = document.getElementById('contactMessage').value;
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const subject = document.getElementById('contactSubject').value.trim();
+    const message = document.getElementById('contactMessage').value.trim();
+    
+    if (!name || !email || !subject || !message) {
+      alert('Please fill all fields');
+      return false;
+    }
     
     const whatsappNumber = '918870208686';
     const whatsappMessage = encodeURIComponent(
       `🏗️ *NEW INQUIRY FROM SVR WEBSITE*\n\n📝 *Client Details:*\nName: ${name}\nEmail: ${email}\n\n📌 *Subject:* ${subject}\n\n💬 *Message:*\n${message}\n\n---\n*Please provide a quotation and timeline for the above project.*`
     );
     
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
-    document.getElementById('contactForm').reset();
+    setTimeout(() => {
+      window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    }, 100);
+    
+    setTimeout(() => {
+      document.getElementById('contactForm').reset();
+    }, 200);
     
     return false;
   }
