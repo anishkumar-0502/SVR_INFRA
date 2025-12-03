@@ -9216,3 +9216,74 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+
+/*--------------------------------------------------------------
+# Swiper Team Carousel
+--------------------------------------------------------------*/
+.mySwiper-team {
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.mySwiper-team .swiper-slide {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: auto;
+}
+
+.mySwiper-team .swiper-slide .agent-card {
+  width: 360px;
+  max-width: 100%;
+}
+
+.mySwiper-team .swiper-pagination {
+  bottom: 0;
+}
+
+.mySwiper-team .swiper-pagination-bullet {
+  background-color: var(--accent-color);
+  opacity: 0.5;
+}
+
+.mySwiper-team .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+  opacity: 1;
+}
+
+.mySwiper-team .swiper-button-prev,
+.mySwiper-team .swiper-button-next {
+  color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  background-color: var(--surface-color);
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.mySwiper-team .swiper-button-prev:after,
+.mySwiper-team .swiper-button-next:after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mySwiper-team .swiper-button-prev:hover,
+.mySwiper-team .swiper-button-next:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .mySwiper-team .swiper-button-prev,
+  .mySwiper-team .swiper-button-next {
+    width: 35px;
+    height: 35px;
+  }
+
+  .mySwiper-team .swiper-button-prev:after,
+  .mySwiper-team .swiper-button-next:after {
+    font-size: 14px;
+  }
+}

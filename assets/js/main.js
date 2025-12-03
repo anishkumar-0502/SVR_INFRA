@@ -267,4 +267,42 @@
     });
   }
 
+  /**
+   * Initialize Team Swiper Carousel
+   */
+  function initTeamSwiper() {
+    const swiperTeam = new Swiper('.mySwiper-team', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      pagination: {
+        el: '.mySwiper-team .swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.mySwiper-team .swiper-button-next',
+        prevEl: '.mySwiper-team .swiper-button-prev',
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 1,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      },
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+    });
+  }
+
+  window.addEventListener('load', initTeamSwiper);
+
 })();
