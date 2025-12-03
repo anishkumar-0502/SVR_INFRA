@@ -157,12 +157,12 @@
               <p>SVR Infrastructure & Builders specializes in delivering high-quality construction and infrastructure solutions with expertise in Architecture, Interior Design, and Landscape Design. We've been building strong foundations for a sustainable future since 2014 in Coimbatore.</p>
 
               <div class="search-form" data-aos="fade-up" data-aos-delay="300">
-                <form action="">
+                <form id="heroSearchForm" onsubmit="handleHeroSearchForm(event)">
                   <div class="row g-3">
                     <div class="col-12">
                       <div class="form-floating">
-                        <input type="text" class="form-control" id="project-name" name="project_name" placeholder="Your Project Name" required="">
-                        <label for="project-name">Project Name</label>
+                        <input type="text" class="form-control" id="client-name" name="client_name" placeholder="Your Name" required="">
+                        <label for="client-name">Client Name</label>
                       </div>
                     </div>
 
@@ -1580,6 +1580,28 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+  function handleHeroSearchForm(event) {
+    event.preventDefault();
+    
+    const clientName = document.getElementById('client-name').value;
+    const serviceType = document.getElementById('service-type').value;
+    const budgetRange = document.getElementById('budget-range').value;
+    const projectSize = document.getElementById('project-size').value;
+    const timeline = document.getElementById('timeline').value;
+    
+    const whatsappNumber = '918870208686';
+    const whatsappMessage = encodeURIComponent(
+      `Hi, I'm interested in your construction services.\n\nClient Name: ${clientName}\nService Type: ${serviceType}\nBudget Range: ${budgetRange}\nProject Scale: ${projectSize}\nTimeline: ${timeline}\n\nPlease provide more details about your services.`
+    );
+    
+    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    document.getElementById('heroSearchForm').reset();
+    
+    return false;
+  }
+  </script>
 
 </body>
 
