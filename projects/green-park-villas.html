@@ -444,21 +444,29 @@
   function handleContactForm(event) {
     event.preventDefault();
     
-    const name = document.getElementById('contactName') ? document.getElementById('contactName').value : 'Guest';
-    const email = document.getElementById('contactEmail') ? document.getElementById('contactEmail').value : 'Not provided';
-    const phone = document.querySelector('input[name="phone"]') ? document.querySelector('input[name="phone"]').value : 'Not provided';
-    const subject = document.getElementById('contactSubject') ? document.getElementById('contactSubject').value : 'Inquiry';
-    const message = document.getElementById('contactMessage') ? document.getElementById('contactMessage').value : 'Message not provided';
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const phone = document.querySelector('input[name="phone"]') ? document.querySelector('input[name="phone"]').value.trim() : 'Not provided';
+    const subject = document.getElementById('contactSubject').value.trim();
+    const message = document.getElementById('contactMessage').value.trim();
     
-    const whatsappNumber = '8870208686';
+    if (!name || !email || !subject || !message) {
+      alert('Please fill all fields');
+      return false;
+    }
+    
+    const whatsappNumber = '918870208686';
     const whatsappMessage = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject}\n\nMessage:\n${message}`
+      `🏗️ *NEW INQUIRY FROM SVR WEBSITE*\n\n📝 *Client Details:*\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\n\n📌 *Subject:* ${subject}\n\n💬 *Message:*\n${message}`
     );
     
-    window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    setTimeout(() => {
+      window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
+    }, 100);
     
-    const form = document.getElementById('projectInquiryForm') || event.target;
-    if(form && form.reset) form.reset();
+    setTimeout(() => {
+      document.getElementById('projectInquiryForm').reset();
+    }, 200);
     
     return false;
   }
