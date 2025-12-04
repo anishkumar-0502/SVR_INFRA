@@ -253,16 +253,16 @@
                 <form id="projectInquiryForm" onsubmit="handleContactForm(event)" class="php-email-form">
                   <div class="row">
                     <div class="col-12 form-group">
-                      <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                      <input type="text" id="contactName" name="name" class="form-control" placeholder="Your Name" required="">
                     </div>
                     <div class="col-12 form-group">
-                      <input type="email" name="email" class="form-control" placeholder="Your Email" required="">
+                      <input type="email" id="contactEmail" name="email" class="form-control" placeholder="Your Email" required="">
                     </div>
                     <div class="col-12 form-group">
                       <input type="tel" name="phone" class="form-control" placeholder="Your Phone">
                     </div>
                     <div class="col-12 form-group">
-                      <input type="text" name="subject" class="form-control" placeholder="Subject" value="Inquiry: Pearl Commercial Tower">
+                      <input type="text" id="contactSubject" name="subject" class="form-control" placeholder="Subject" value="Inquiry: Pearl Commercial Tower">
                     </div>
                     <div class="col-12 form-group">
                       <textarea class="form-control" id="contactMessage" name="message" rows="4" placeholder="Your Message"></textarea>
@@ -381,7 +381,7 @@
                 <i class="bi bi-envelope"></i>
               </div>
               <div class="contact-info">
-                <p>info@svrinfrabuilders.com</p>
+                <p>svrinfrastructurebuilders@gmail.com</p>
               </div>
             </div>
 
@@ -446,17 +446,18 @@
     
     const name = document.getElementById('contactName') ? document.getElementById('contactName').value : 'Guest';
     const email = document.getElementById('contactEmail') ? document.getElementById('contactEmail').value : 'Not provided';
+    const phone = document.querySelector('input[name="phone"]') ? document.querySelector('input[name="phone"]').value : 'Not provided';
     const subject = document.getElementById('contactSubject') ? document.getElementById('contactSubject').value : 'Inquiry';
     const message = document.getElementById('contactMessage') ? document.getElementById('contactMessage').value : 'Message not provided';
     
     const whatsappNumber = '8870208686';
     const whatsappMessage = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nSubject: ${subject}\n\nMessage:\n${message}`
     );
     
     window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
     
-    const form = document.getElementById('contactForm') || event.target;
+    const form = document.getElementById('projectInquiryForm') || event.target;
     if(form && form.reset) form.reset();
     
     return false;
